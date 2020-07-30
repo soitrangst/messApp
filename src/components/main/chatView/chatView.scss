@@ -1,0 +1,81 @@
+.chat {
+    & .chat-body {
+        & .chat-header {
+            & .container-xxl {
+                width: 100%;
+                padding-right: 20px;
+                padding-left: 20px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+    }
+    & .avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    & .avatar-sm {
+        height: 2.75rem;
+        min-height: 2.75rem;
+        width: 2.75rem;
+        min-width: 2.75rem;
+        border-radius: 50%;
+        & img {
+            height: 2.75rem;
+            min-height: 2.75rem;
+            width: 2.75rem;
+            min-width: 2.75rem;
+            border-radius: 50%;
+        }
+    }
+    & .avatar-xl {
+        height: 5.75rem;
+        min-height: 5.75rem;
+        width: 5.75rem;
+        min-width: 5.75rem;
+        & img {
+            height: 5.75rem;
+            min-height: 5.75rem;
+            width: 5.75rem;
+            min-width: 5.75rem;
+        }
+    }
+    & .chat-sidebar {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        z-index: 3;
+        width: 100%;
+        visibility: hidden;
+        transition: visibility .4s ease, -webkit-transform .4s ease, transform .4s ease;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: white;
+    }
+    & .chat-sidebar-visible {
+        visibility: visible;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+@media (min-width:1200px) {
+    .chat {
+        & .chat-sidebar-visible {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            visibility: visible;
+            min-width: 350px;
+        }
+        & .chat-sidebar {
+            height: 100vh;
+            position: static;
+            border-left: 1px solid rgba(245, 246, 250, .85);
+            width: 0;
+            margin-right: -1px;
+        }
+    }
+}
