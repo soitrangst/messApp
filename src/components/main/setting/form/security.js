@@ -7,6 +7,11 @@ function Security(props) {
     const [oldPass, setOldPass] = useState('')
     const [newPass, setNewPass] = useState('')
     const [verify, setVerify] = useState('')
+    const [toggleShow, setToggleShow] = useState(true)
+
+    const _show = () => {
+        setToggleShow(!toggleShow)
+    }
 
     const _onSubmit = (event) => {
         event.preventDefault()
@@ -25,9 +30,11 @@ function Security(props) {
         security({ currentPassword: oldPass, newPassword: newPass })
     }
 
+    const classCollapse = toggleShow ? 'collapse' : 'collapse show'
+
     return (
         <div className="card mb-2 mb-lg-2">
-            <div className="card-header position-relative">
+            <div className="card-header position-relative" onClick={() => _show()} >
                 <span className="text-reset d-block stretched-link collapsed" >
                     <div className="row no-gutters align-items-center">
                         <div className="col">
@@ -40,7 +47,7 @@ function Security(props) {
                     </div>
                 </span>
             </div>
-            <div className="collapse show" >
+            <div className={classCollapse} >
                 <div className="card-body">
                     <form onSubmit={_onSubmit}>
                         <div className="form-group">

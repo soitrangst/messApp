@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Notification(props) {
+
+    const [toggleShow, setToggleShow] = useState(true)
+
+    const _show = () => {
+        setToggleShow(!toggleShow)
+    }
+
+    const classCollapse = toggleShow ? 'collapse' : 'collapse show'
     return (
         <div className="card mb-2 mb-lg-2">
-            <div className="card-header position-relative">
+            <div className="card-header position-relative" onClick={() => _show()}>
                 <span className="text-reset d-block stretched-link collapsed" >
                     <div className="row no-gutters align-items-center">
                         <div className="col">
@@ -17,7 +25,7 @@ function Notification(props) {
                     </div>
                 </span>
             </div>
-            <div className="collapse show" >
+            <div className={classCollapse} >
                 <div className="card-body">
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item pt-0 px-0">

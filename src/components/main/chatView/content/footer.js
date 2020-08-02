@@ -5,14 +5,18 @@ function Footer(props) {
     const [message, setMessage] = useState('')
     const { sendMessage } = props
 
-    // const enter = (e) => {
-    //     if (e.keyCode == 13 && e.shiftKey == false) { onSubmit(e) }
-    // }
+    const enter = (e) => {
+        if (e.keyCode == 13 && e.shiftKey == false) {
+            onSubmit(e)
+        }
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
         if (message) {
-            sendMessage(message)
+            const text = message.replace(/\n$/, "")
+            console.log(text);
+            sendMessage(text)
             setMessage('')
         }
     }
@@ -26,7 +30,7 @@ function Footer(props) {
                             <div className="input-group">
                                 <textarea
                                     value={message}
-                                    // onKeyUp={enter}
+                                    onKeyUp={enter}
                                     onChange={(e) => { setMessage(e.target.value) }}
                                     className="form-control bg-transparent border-0" placeholder="Type your message..." rows="1" data-emoji-input="" data-autosize="true" ></textarea>
                                 <div className="input-group-append">
